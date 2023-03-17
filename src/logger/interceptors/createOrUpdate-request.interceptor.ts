@@ -6,7 +6,7 @@ import { LogDiff } from "../helper/utility";
 export class CreateOrUpdateReqInterceptor implements NestInterceptor{
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
          const req=context.switchToHttp().getRequest();
-         const data=req.body;
+         const data=req;
          const result={
             tableId:data.tableId,
             rowId:data.rowId,

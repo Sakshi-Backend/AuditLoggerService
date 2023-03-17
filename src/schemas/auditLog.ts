@@ -11,7 +11,7 @@ export class AuditLog{
    tableId:number
    
    @Prop({required:true})
-   rowId:number
+   rowId:string
    
    @Prop()
    changeHistory:ChangeHistory[]

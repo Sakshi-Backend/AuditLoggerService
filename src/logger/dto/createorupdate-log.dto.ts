@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 import { ChangeHistoryDto } from "./changeHistory.dto";
 
 export class CreateOrUpdateLogDto{
@@ -7,7 +7,7 @@ export class CreateOrUpdateLogDto{
     tableId:number;
     
     @IsNotEmpty()
-    rowId:number;
+    rowId:string;
     
     @IsNotEmpty()
     changeHistory:ChangeHistoryDto
