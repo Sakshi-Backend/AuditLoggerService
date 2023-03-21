@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AuditLog, AuditLogDocument } from 'src/schemas/auditLog';
@@ -23,7 +23,10 @@ export class LoggerService {
          }).exec();
          return auditLog;    
      }catch(error){
-        throw error;
+        throw new HttpException(
+         'Failed to create or update logger',
+         HttpStatus.INTERNAL_SERVER_ERROR,
+       );
      }
     }
 }

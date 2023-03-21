@@ -16,12 +16,8 @@ export class LoggerController {
     @UseInterceptors(new CreateOrUpdateReqInterceptor())
     @EventPattern('create-log')
     async createOrUpdate(log):Promise<AuditLog>{
-        try{
-          const auditLog = await this.loggerService.createOrUpdate(log.body);
-          return auditLog
-        }catch(err){
-            throw err;
-        }
+        const auditLog = await this.loggerService.createOrUpdate(log.body);
+        return auditLog
     }
 }
 
