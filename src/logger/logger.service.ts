@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AuditLog, AuditLogDocument } from 'src/schemas/auditLog';
 import { CreateOrUpdateLogDto } from './dto/createorupdate-log.dto';
+import { GetLogDto } from './dto/getLog.dto';
 
 @Injectable()
 export class LoggerService {
@@ -28,5 +29,22 @@ export class LoggerService {
          HttpStatus.INTERNAL_SERVER_ERROR,
        );
      }
+    }
+
+    async getLog(query:GetLogDto):Promise<AuditLog>{
+      try {
+        const auditLog= await this.auditLogModel.findOne({
+          tableId:query.tableId,
+          rowId:query.rowId
+        },{
+         changeHistory:{$slice:query.count ? +query.count:5} //by default top 5 logs will be fetched
+        })
+        return auditLog;         
+      } catch (error) {
+         throw new HttpException(
+            'Failed to get log',
+            HttpStatus.INTERNAL_SERVER_ERROR
+         )
+      }
     }
 }
