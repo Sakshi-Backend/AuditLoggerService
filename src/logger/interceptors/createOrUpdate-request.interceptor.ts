@@ -14,7 +14,7 @@ export class CreateOrUpdateReqInterceptor implements NestInterceptor{
         }
         if(data.ipAddress) result.changeHistory['ipAddress']=data.ipAddress;
         if(data.miscellaneous) result.changeHistory['miscellaneous']=data.miscellaneous;
-        if(data.user) result.changeHistory['user']=data.user;
+        if(data.userId) result.changeHistory['userId']=data.userId;
         if(data.action) result.changeHistory['action']=data.action;
         result.changeHistory['log']= LogDiff.calculateDiff(data.oldData,data.newData)
          req.body=result;

@@ -15,7 +15,7 @@ export class ChangeHistory{
     log:object
     
     @Prop()
-    user:object
+    userId:string;
     
     @Prop()
     ipAddress:string

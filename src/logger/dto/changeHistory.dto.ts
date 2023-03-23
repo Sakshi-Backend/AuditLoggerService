@@ -9,7 +9,7 @@ export class ChangeHistoryDto{
     log:object
     
     @IsNotEmpty()
-    user:object
+    userId:string
     
     @IsOptional()
     ipAddress:string
