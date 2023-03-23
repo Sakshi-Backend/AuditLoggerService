@@ -6,7 +6,7 @@ export class LogDiff{
  */
 public static doesKeyValueMatchInData(key, oldData, newData){
   if (oldData.hasOwnProperty(key)) {
-    if (oldData[key] === newData[key]) {
+    if (oldData[key] === newData[key] || key==='updatedAt') {  //not storing the updatedAt as difference
       return true;
     }
     // key is available but value has changed
@@ -19,7 +19,8 @@ public static doesKeyValueMatchInData(key, oldData, newData){
   public static calculateDiff(oldData, newData){
       // if oldData is {} i.e. row is newly created
       if (Object.keys(oldData).length === 0) {
-          return newData;
+         let {_id,...result}=newData
+          return result;
         }
         const log = {};
         //newly changed data

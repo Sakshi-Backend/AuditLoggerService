@@ -9,7 +9,7 @@ export class ChangeHistory{
     action:string
 
     @Prop({required:true,default:()=>{return new Date()}})
-    date:Date;
+    created:Date;
 
     @Prop()
     log:object
