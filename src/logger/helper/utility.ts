@@ -6,7 +6,7 @@ export class LogDiff{
  */
 public static doesKeyValueMatchInData(key, oldData, newData){
   if (oldData.hasOwnProperty(key)) {
-    if (oldData[key] === newData[key] || key==='updatedAt') {  //not storing the updatedAt as difference
+    if (oldData[key] === newData[key] || key==='updatedAt') {  //not storing the updatedAt in log
       return true;
     }
     // key is available but value has changed

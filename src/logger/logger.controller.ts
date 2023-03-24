@@ -12,7 +12,8 @@ export class LoggerController {
 
     /**
      * API to create or update the logs
-     * @params CreateOrUpdateLogDto contains data to create or update log
+     * @params CreateOrUpdateLogDto:data to create or update log
+     * @returns AuditLog
      */
     @UseInterceptors(new CreateOrUpdateReqInterceptor())
     @EventPattern('create-log')
@@ -22,7 +23,7 @@ export class LoggerController {
     }
     
     /**
-     * API to get the changeHistory of given tableId and rowId with no of counts
+     * API to get the changeHistory of given tableId and rowId with no of log counts
      * @param query tableId,rowId,count
      * @returns AuditLog
      */
